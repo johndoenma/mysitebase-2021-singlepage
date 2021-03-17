@@ -236,10 +236,12 @@ body {
 
 /* SITE HEADER */
 
+/* SITE HEADER */
 .site-header {
-    padding: 1em .5em;
+    padding: 1em 0;
 }
 
+/* ON LARGER SCREENS PLACE LOGO LEFT AND NAV RIGHT */
 @media (min-width: 768px) {
     .site-header .container {
         display: flex;
@@ -247,35 +249,23 @@ body {
     }
 }
 
+/* STYLING FOR BOTH HEADER AND FOOTER */
 .site-header a,
 .site-footer a {
     color: rgba(0,0,0,.8);
-    text-decoration: none;
 }
 .site-header a:hover,
 .site-footer a:hover {
     color: rgba(0,0,0,1);
+    text-decoration: none;
 }
 
-/* SITE FOOTER */
-.site-footer {
-    padding: 1em .5em 2em .5em;
-}
-
-
-/* SITE ID (LOGO) */
+/* LOGO AREA */
 .site-id h1 {
     font-size: 1.5em;
     margin: 0;
+    padding-top: .55em;
     text-align: center;
-    color: rgba(0,0,0,.5);
-    font-weight: normal;
-}
-
-.site-id a {
-    display: inline-block;
-    padding: .25em 0;
-    font-weight: bold;
 }
 
 /* STICKY header - works with a class="sticky" on .site-header */
@@ -288,115 +278,84 @@ body {
   }
   
   .site-header.sticky + .site-main {
-    padding-top: 3em;
+    padding-top: 4em;
   }
 
 /* SITE NAV (Primary Top Nav) */
 .site-nav ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     margin: 0;
     padding: 0;
-}
-
-.site-nav li {
     list-style: none;
+    display: flex;
+    justify-content: center;
 }
 
 .site-nav a {
     display: block;
-    padding: .5em 1em;
+    padding: 1em;
 }
 
-/* MENU BUTTON */
-.menu-button {
-    position: absolute;
-    left: -9999px;
-    padding: .5em;
-}
-.menu-button:hover {
-    cursor: pointer;
-}
-.menu-button::selection {
-    color: none;
-    background: none;
+.site-nav .menu-button {
+    display: none;
 }
 
 
-/* TOGGLE-NAV */
-
+/* TOGGLE NAV */
 @media (max-width: 767px) {
-
-    .toggle-nav .site-id h1 {
-        text-align: left;
-    }
-
-    .toggle-nav .menu-button {
+    
+    .toggle-nav .site-id {
         position: absolute;
-        left: auto;
-        top: 1em;
-        right: 1.5em;
     }
-
     .toggle-nav .site-nav {
+        text-align: right;
+    }
+    .toggle-nav .site-nav .menu-button {
+        display: block;
+        display: inline-block;
+        cursor: pointer;
+        padding: .3em .8em;
+        /* margin-bottom: .8em; */
+        border: 1px solid black;
+    }
+    .toggle-nav .site-nav .menu-button::selection {
+        background-color: rgba(255,255,255,0);
+    }
+    .toggle-nav .site-nav ul {
+        display: block;
         text-align: center;
     }
-
-    /* HIDE NAV ON SMALL SCREENS BY DEFAULT */
-    .toggle-nav .site-nav ul {
-        position: absolute;
-        left: -9999px;
-        margin-top: 1em;
+    .toggle-nav .site-nav a:hover {
+        background-color: rgba(0,0,153,1);
+        color: white;
+    }
+    .toggle-nav[data-navstate="closed"] ul {
+        height: 0;
+        overflow: hidden;
+    }
+    .toggle-nav[data-navstate="open"] ul {
+        margin-top: .75em;
+        height: auto;
+        overflow: visible;
     }
 
-    /* SHOW NAV ON SMALL SCREENS WHEN EXPANDED CLASS IS TOGGLED */
-    .toggle-nav.expanded .site-nav ul {
-        position: static;
-        left: auto;
-        display: block;
+    /* NAVICON */
+    .toggle-nav .site-nav .menu-button.navicon {
+        border: none;
+        color: rgba(255,255,255,0);
+        padding: 0;
     }
-    .toggle-nav.expanded .site-nav a {
-        background: rgba(0, 51, 102, 1);
-        color: rgba(255, 255, 255, 1);
-        margin: .5em 0;
-        padding: 1em;
+    .toggle-nav .site-nav .menu-button.navicon::after {
+        content: "\2630";
+        display: inline-block;
+        padding: .2em 0;
+        margin: 0;
+        color: rgba(0,0,0,.8);
+        font-size: 1.5em;
     }
-
-    .toggle-nav.expanded .site-nav a:hover {
-        background: rgba(0, 0, 51, 1);
-    }
-
-    /* ANIMATING THE TOGGLE NAV */
-    .toggle-nav .site-nav ul {
-        transition: all 1s ease;
-        max-height: 0;
+    .toggle-nav[data-navstate="open"] .site-nav .menu-button.navicon::after {
+        content: "\2715";
     }
 
-    .toggle-nav.expanded .site-nav ul  {
-        max-height: 400px;
-    }
-
-}
-
-/* NAVICON */
-
-.navicon {
-    color: rgba(0,0,0,0);
-    padding: 0;
-}
-.navicon::after {
-    content: "\2630";
-    color: rgba(0,0,0,1);
-    display: inline-block;
-    font-size: 1.5em;
-    transform: rotate(0deg);
-}
-
-.expanded .navicon::after {
-    content: "\2715";
-    transform: rotate(-90deg);
-    transition: transform .4s ease-out;
 }
 
 
