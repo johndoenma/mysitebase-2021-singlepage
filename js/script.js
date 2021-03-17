@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //STICKY NAV - CLOSE THE NAV ON STICKY HEADER NAV LINK CLICKS
     const stickynavlinks = document.querySelectorAll(".sticky nav a");
-    for (var i = 0; i < stickynavlinks.length; i++) {
+    for (let i = 0; i < stickynavlinks.length; i++) {
         stickynavlinks[i].addEventListener('click', function () {
             menunav.setAttribute('data-navstate', 'closed');
         });
